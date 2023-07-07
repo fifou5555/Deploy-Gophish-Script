@@ -3,7 +3,7 @@
 echo "This will install Docker, docker compose and Portainer for Ubuntu/Debian based distros"
 
 apt update && apt upgrade -y
-
+apt install nano
 apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common -y
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
@@ -19,3 +19,10 @@ echo "done installing! You can run docker ps to see portainer running"
 =======
 echo "done installing! You can run docker ps to see portainer running"
 >>>>>>> c6880366e1b60a752b1057ee29eb5e8263cbac4e
+
+echo "installing coral driver"
+
+echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | tee /etc/apt/sources.list.d/coral-edgetpu.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+apt-get update
+apt-get install libedgetpu1-std
